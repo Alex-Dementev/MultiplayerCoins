@@ -16,20 +16,29 @@ public class CoinsManager : MonoBehaviour
         // Случайное направление (влево или вправо)
         if (Random.value < 0.5f)
             rotationSpeed *= -1f;
+
+        transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+
+        int CoinsCount = PlayerPrefs.GetInt("CoinsCount", 0);
+        CoinsCount++;
+        PlayerPrefs.SetInt("CoinsCount", CoinsCount);
     }
 
     void Update()
     {
-        transform.Rotate(0f, rotationSpeed * Time.deltaTime, 90f);
+        transform.Rotate(rotationSpeed * Time.deltaTime, 0f, 0f);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             int Coins = PlayerPrefs.GetInt("Coins", 0);
             Coins++;
             PlayerPrefs.SetInt("Coins", Coins);
+            int CoinsCount = PlayerPrefs.GetInt("CoinsCount", 0);
+            CoinsCount -= 1;
+            PlayerPrefs.SetInt("CoinsCount", CoinsCount);
             PhotonNetwork.Destroy(gameObject);
         }
     }

@@ -1,0 +1,10 @@
+# ninja log v5
+65	12812	7912120284362442	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	c3fbf02a95c08416
+47	12843	7912120284397524	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	f48285e1e3c0e37
+15	12848	7912120284486529	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	a774984ad6fbd369
+122	12861	7912120284865321	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	bc68715719754d94
+1	12907	7912120285439348	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	89c3f5cee2a17dcd
+83	13182	7912120288083378	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	61f9c4b10d9d6072
+31	13392	7912120289883381	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	5ffaa1562801da5f
+101	13577	7912120292063296	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	a36979e92bfa952e
+13578	13884	7912120295237682	C:/Users/Drago/MultiplayerCoins/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/Debug/2w6d6q5v/obj/arm64-v8a/libgame.so	c376367f41949f78

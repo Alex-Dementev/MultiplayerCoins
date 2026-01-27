@@ -129,8 +129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d508552740282b488f05bf64345d19e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RotateCoins
-  minSpeed: 30
-  maxSpeed: 120
 --- !u!114 &1728416736480981141
 MonoBehaviour:
   m_ObjectHideFlags: 0

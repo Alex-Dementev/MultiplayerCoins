@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public Text CoinsText;
 
+    private bool Win;
+
     void Start()
     {
         Vector3 pos = new Vector3(Random.Range(-2f, 2f), -6f, Random.Range(-2f, 2f));
@@ -34,6 +36,12 @@ public class GameManager : MonoBehaviourPunCallbacks
 
 
         CoinsText.text = "Собранно: " + PlayerPrefs.GetInt("Coins", 0) + " монет!";
+
+        if(PlayerPrefs.GetInt("Coins", 0) >= 10 && !Win)
+        {
+            Win = true;
+            PhotonNetwork.LoadLevel("WinLose");
+        }
     }
 
     public void Leave()

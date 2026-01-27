@@ -3,26 +3,33 @@ using Photon.Pun;
 
 public class PlayerController : MonoBehaviour
 {
-    private PhotonView PhotonView;
+    private PhotonView photonView;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public float Speed = 4f;
+    private DynamicJoystick Joystick;
+
     private void Start()
     {
-        PhotonView = GetComponent<PhotonView>();
+        photonView = GetComponent<PhotonView>();
+        Joystick = FindObjectOfType<DynamicJoystick>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(!PhotonView.IsMine) return;
-        
-        if (Input.GetKey(KeyCode.A))
-        transform.Translate(Vector3.left * 3 * Time.deltaTime);
-        if (Input.GetKey(KeyCode.D))
-        transform.Translate(Vector3.right * 3 * Time.deltaTime);
-        if (Input.GetKey(KeyCode.W))
-        transform.Translate(Vector3.forward * 3 * Time.deltaTime);  
-        if (Input.GetKey(KeyCode.S))
-        transform.Translate(Vector3.back * 3 * Time.deltaTime);
+        if (!photonView.IsMine) return;
+
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
+
+        // Если есть джойстик и его двигают — используем его
+        if (Joystick != null && (Mathf.Abs(Joystick.Horizontal) > 0.1f || Mathf.Abs(Joystick.Vertical) > 0.1f))
+        {
+            h = Joystick.Horizontal;
+            v = Joystick.Vertical;
+        }
+
+        Vector3 direction = new Vector3(h, 0, v).normalized;
+
+        transform.Translate(direction * Speed * Time.deltaTime, Space.World);
     }
 }

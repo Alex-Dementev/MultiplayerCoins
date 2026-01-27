@@ -9,6 +9,8 @@ public class CreateCoins : MonoBehaviourPunCallbacks
 
     void Start()
     {
+        PlayerPrefs.SetInt("CoinsCount", 0);
+
         Vector3 pos = new Vector3(Random.Range(-5f, 5f), -10f, Random.Range(-2f, 12f));
         PhotonNetwork.Instantiate(PlayerPrefab.name, pos, Quaternion.identity);
         pos = new Vector3(Random.Range(-5f, 5f), -10f, Random.Range(-2f, 12f));
@@ -22,6 +24,14 @@ public class CreateCoins : MonoBehaviourPunCallbacks
        if (PhotonNetwork.InRoom)
         {
             Debug.Log("Игроков: " + PhotonNetwork.CurrentRoom.PlayerCount);
+        }
+
+        if(PlayerPrefs.GetInt("CoinsCount", 0) <= 1)
+        {
+            Vector3 pos = new Vector3(Random.Range(-5f, 5f), -10f, Random.Range(-2f, 12f));
+            PhotonNetwork.Instantiate(PlayerPrefab.name, pos, Quaternion.identity);
+            pos = new Vector3(Random.Range(-5f, 5f), -10f, Random.Range(-2f, 12f));
+            PhotonNetwork.Instantiate(PlayerPrefab.name, pos, Quaternion.identity);
         }
     }
 }
